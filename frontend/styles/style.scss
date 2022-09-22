@@ -1,0 +1,543 @@
+@import './partials/variables.scss', './partials/mixins.scss';
+/**
+* some default styles
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font: {
+    size: 16px;
+    weight: 600;
+    style: normal;
+    family: 'Alatsi', sans-serif;
+  }
+  overflow: hidden;
+  background-color: #000;
+  color: #fff;
+}
+
+.overlay {
+  color: #000;
+  display: none;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+
+  &.active {
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  padding: 0 10px;
+}
+
+#background-canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+//home page
+.home-container {
+  text-align: center;
+}
+
+.home-ul {
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 5px;
+  padding: 2em 3em;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  li {
+    margin-bottom: 0.2em;
+    font-size: 2.5em;
+    cursor: pointer;
+
+    &:hover {
+      @include textLinerColor;
+    }
+  }
+}
+
+//game page
+.game {
+  border-radius: 10px;
+}
+
+.game-container {
+  text-align: center;
+  .score {
+    font-size: 3em;
+  }
+}
+
+.play-again-container {
+  font-size: 2.5em;
+
+  .play-again-message {
+    @include textLinerColor;
+    margin-bottom: 0.5em;
+  }
+
+  button {
+    @include button(0.2em, 0.7em);
+    &:first-child {
+      margin-right: 1em;
+    }
+  }
+}
+
+.score-container {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2em;
+}
+
+.score-current,
+.score-best {
+  font-size: 1.8em;
+}
+
+//login and register
+.login-and-register-form {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 5px;
+  padding: 20px 30px;
+  text-align: center;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  max-width: 600px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  & h2 {
+    @include textLinerColor;
+    font-size: 35px;
+  }
+}
+
+.form-inputs-container {
+  display: flex;
+  margin: 40px 0;
+}
+
+.login-input-container {
+  display: flex;
+  position: relative;
+  width: 100%;
+
+  &:nth-child(2) {
+    justify-content: flex-end;
+
+    & label {
+      left: 7px;
+    }
+  }
+
+  .login-label {
+    position: absolute;
+    top: -1.3em;
+    left: 0;
+    font-size: 0.9em;
+  }
+
+  .login-input {
+    width: 97%;
+    height: 3.2em;
+    border-radius: 3px;
+    outline: none;
+    border: none;
+    padding: 0 1em;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 0.92em;
+  }
+}
+
+.form-button {
+  @include button(0.8em, 2em);
+}
+
+.login-link-container {
+  margin-top: 1em;
+  font-size: 0.9em;
+
+  & a {
+    color: rgb(0, 248, 248);
+  }
+}
+
+.register-form-header-container {
+  position: relative;
+
+  & h2 {
+    margin: auto;
+  }
+
+  & i {
+    position: absolute;
+    left: 0;
+    padding: 0.4em 0.4em 0.4em 0;
+    cursor: pointer;
+    @include textLinerColor;
+    font-size: 1.5em;
+  }
+}
+
+// countries template
+
+.countries-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  & input[name='country'] {
+    display: none;
+  }
+
+  & > label {
+    cursor: pointer;
+    &:hover > div {
+      @include textLinerColor;
+    }
+  }
+}
+
+.country {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+  height: 100%;
+  width: 97%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.88em;
+  font-size: 0.92em;
+  position: relative;
+}
+
+.register-country-img {
+  width: 1.5em;
+  height: 1em;
+}
+
+.register-country-title {
+  position: absolute;
+  top: -1.3em;
+  left: 0;
+  font: {
+    size: 0.9em;
+    font-weight: 800;
+  }
+}
+
+.fa-arrow-left-long {
+  position: absolute;
+  top: -1.3em;
+  right: 0;
+
+  &:hover {
+    cursor: pointer;
+    @include textLinerColor;
+  }
+}
+
+.cancel-register {
+  right: 0.5em;
+}
+
+//score page
+.score-container {
+  max-width: 1100px;
+  width: 100%;
+  position: relative;
+}
+
+.score-table {
+  width: 100%;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  .score-table-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  th {
+    padding: 1.2em 0;
+    @include textLinerColor;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  }
+
+  td {
+    text-align: center;
+    padding: 0.5em 0;
+    margin-bottom: 1em;
+  }
+
+  .score-country-container {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.score-row {
+  height: 2.8em;
+}
+
+.score-flag {
+  width: 1.9em;
+  height: 1.3em;
+}
+
+.gold {
+  color: rgb(255, 238, 0);
+}
+
+.cancel-score {
+  font-size: 1.3em;
+}
+
+//settings page
+.settings-page-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  max-width: 500px;
+  width: 100%;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  nav {
+    display: flex;
+    font-size: 2em;
+    margin-bottom: 15px;
+
+    .middle-border {
+      border-left: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .settings-link {
+      line-height: 2em;
+      flex: 1;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+
+      &.active {
+        border: none;
+        @include textLinerColor;
+      }
+    }
+  }
+}
+
+.default-container {
+  flex-direction: column;
+}
+
+.default-container,
+.colors-container {
+  text-align: center;
+  padding: 1em 1.5em;
+}
+
+.board-size-container {
+  display: flex;
+
+  .board-label {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 10px 0;
+    cursor: pointer;
+    padding-bottom: 0.2em;
+    opacity: 0.6;
+    height: 8em;
+    &.active {
+      transition: opacity 0.2s ease-in-out;
+      opacity: 1;
+      box-shadow: rgba(255, 255, 255, 0.2) 0px 7px 29px 0px;
+    }
+
+    input {
+      display: none;
+    }
+  }
+}
+
+.item-container:not(:last-child) {
+  margin-bottom: 30px;
+
+  .settings-title {
+    margin-bottom: 10px;
+  }
+}
+
+.fps-input {
+  margin: 10px 0;
+  width: 60%;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.fps-input::-moz-range-track {
+  width: 100%;
+  height: 13px;
+  background: #50555c;
+  border-radius: 14px;
+}
+.fps-input::-moz-range-thumb {
+  border: none;
+  height: 18px;
+  width: 37px;
+  border-radius: 21px;
+  background: #529de1;
+}
+
+.colors-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .colors-item {
+    position: relative;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .settings-color {
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      width: 2.5em;
+      height: 2.5em;
+      border-radius: 4px;
+      background-color: black;
+      margin-top: 10px;
+    }
+  }
+}
+
+.color-picker {
+  background-color: rgba($color: #000000, $alpha: 0.7);
+  z-index: 100;
+  position: absolute;
+  top: calc(100% + 1em);
+  width: 10em;
+  display: none;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-radius: 4px;
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 8px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  &:after {
+    content: '';
+    height: 1em;
+    width: 1em;
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    position: absolute;
+    top: -0.6em;
+    left: calc(50% - 0.5em);
+    transform: rotate(45deg);
+  }
+
+  &.active {
+    display: flex;
+  }
+
+  .color-picker-colors-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0.5em 0.7em;
+  }
+
+  .color-picker-color {
+    cursor: pointer;
+    width: 1.7em;
+    height: 1.7em;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .color-picker-title {
+    font-size: 0.8em;
+    line-height: 2em;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  }
+}
+.settings-btn-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 1em 0;
+  padding: 0 1em;
+  .settings-btn {
+    justify-content: center;
+    align-items: center;
+    width: 8em;
+    height: 3em;
+    cursor: pointer;
+    border-radius: 5px;
+    @include button(0.8em, 2em);
+  }
+}
+
+.cancel-settings {
+  font-size: 1.5em;
+}
+
+.monitor-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.monitor-img {
+  width: 3em;
+  height: auto;
+}
